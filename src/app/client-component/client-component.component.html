@@ -1,0 +1,36 @@
+<h2>Client List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Date Naissance</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let client of clients">
+            <td>{{client.id}}</td>
+            <td>{{client.nom}}</td>
+            <td>{{client.prenom}}</td>
+            <td>{{client.dateNaiss}}</td>
+            <td>
+                <button (click)="updateClient(client.id)" class="btn btn-info">Update</button>
+                <button (click)="deleteClient(client.id)"  class="btn btn-danger" style="margin-left: 10px;">delete</button>
+                <button (click)="showClientDetails(client.id)"  class="btn btn-info" style="margin-left: 10px;">details</button>
+           
+            </td>
+        </tr>
+
+        
+
+    </tbody>
+
+</table>
+
+    <mat-paginator  [length]="totalNumber"
+                    [pageSize]="3"
+                    [pageSizeOptions]="[3,5,10]" 
+                    (page)="onPagechange($event)">
+    </mat-paginator>
