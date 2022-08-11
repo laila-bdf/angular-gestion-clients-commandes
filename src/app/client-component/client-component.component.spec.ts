@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -19,6 +20,7 @@ describe('ClientComponentComponent', () => {
       ],
       imports:[
         RouterTestingModule
+
       ]
     })
     .compileComponents();
@@ -35,8 +37,45 @@ describe('ClientComponentComponent', () => {
   it('Should contain h2 tag',()=>{
     const h2elem = fixture.debugElement.query(By.css('h2'));
     // debugger;
-    expect(h2elem.nativeElement.textContent).toBe('Client List');
-  })
+    const heHtmlEleme : HTMLHeadElement= h2elem.nativeElement;
+    expect(heHtmlEleme.textContent).toBe('Client List');
+  });
+
+  it('Should be one table on the page', () => {
+    const buttons = fixture.debugElement.queryAll(By.css('table'));
+    //debugger;
+    expect(buttons.length ==1).toBeTruthy();
+  });
+
+  xit('Should contain update button tag',()=>{
+    const h2elem = fixture.debugElement.queryAll(By.css('button'));
+    //debugger;
+    const heHtmlEleme : HTMLButtonElement= h2elem[0].nativeElement;
+    expect(heHtmlEleme.textContent).toBe('Update');
+  });
+
+  xit('Should contain delete button tag',()=>{
+    const h2elem = fixture.debugElement.queryAll(By.css('button'));
+    //debugger;
+    const heHtmlEleme : HTMLButtonElement= h2elem[0].nativeElement;
+    expect(heHtmlEleme.textContent).toBe('Delete');
+  });
+
+  xit('Should contain details button tag',()=>{
+    const h2elem = fixture.debugElement.queryAll(By.css('button'));
+    //debugger;
+    const heHtmlEleme : HTMLButtonElement= h2elem[0].nativeElement;
+    expect(heHtmlEleme.textContent).toBe('Details');
+  });
+
+  it('Should navigate to /clients before button click',
+      () => {
+        const location = TestBed.get(Location);
+        expect(location.path()).toBe('/clients');
+      }
+    );
+
+
 });
 
 class ClientServiceMock{
