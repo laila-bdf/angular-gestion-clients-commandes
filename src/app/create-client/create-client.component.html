@@ -1,6 +1,6 @@
-<form (ngSubmit)="onSubmit()">
+<form #addForm ="ngForm" (ngSubmit)="onSubmit()">
     <div class="modal-header">						
-        <h4 class="modal-title">Add Employee</h4>
+        <h2 class="modal-title">Add Client</h2>
     </div>
     <div class="modal-body">					
         <div class="form-group">
@@ -18,6 +18,6 @@
     </div>
     <div class="modal-footer">
         
-        <input type="submit" class="btn btn-success" value="Add">
+        <input [disabled]="addForm.invalid" type="submit" class="btn btn-success" value="Add">
     </div>
 </form>

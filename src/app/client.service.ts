@@ -10,16 +10,9 @@ export class ClientService {
 
   private baseUrl="/api/v1/clients";
   constructor(private httpClient: HttpClient) { }
-
-  getClientsList(): Observable<Client[]>{
-    return this.httpClient.get<Client[]>(`${this.baseUrl}`);
-  }
-  getTotalClients(): Observable<number>{
-    return this.httpClient.get<number>(`${this.baseUrl}/totalClients`);
-  }
-
-  getClientsListPage(numPage:Number, nbrElement:Number): Observable<Client[]>{
-    return this.httpClient.get<Client[]>(`${this.baseUrl}/page?numPage=${numPage}&nbrElement=${nbrElement}`);
+  
+  getClientsListPage(numPage:Number, nbrElement:Number): Observable<any>{
+    return this.httpClient.get(`${this.baseUrl}?page=${numPage}&size=${nbrElement}`);
   }
 
   createClient(client:Client): Observable<Object>{

@@ -74,8 +74,6 @@ describe('ClientComponentComponent', () => {
         expect(location.path()).toBe('/clients');
       }
     );
-
-
 });
 
 class ClientServiceMock{

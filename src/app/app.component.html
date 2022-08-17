@@ -1,17 +1,98 @@
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+
+	
+	<a href="#" class="navbar-brand"><i class="fa fa-cutlery"></i>Restau<b>rant</b></a> 
+	
+	<div class="menu-btn"> <i class="fa fa-bars"></i> </div>
+
+	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<!-- Collection of nav links, forms, and other content for toggling -->
+	<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">		
+		<form class="navbar-form form-inline">
+			<div class="input-group search-box">								
+				<input type="text" id="search" class="form-control" placeholder="Search here...">
+				<span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+			</div>
+		</form>
+		<div class="navbar-nav ml-auto">
+			<a href="#" class="nav-item nav-link active"><i class="fa fa-home"></i><span>Home</span></a>
+			<a href="#" class="nav-item nav-link"><i class="fa fa-envelope"></i><span>Messages</span></a>		
+			<a href="#" class="nav-item nav-link"><i class="fa fa-bell"></i><span>Notifications</span></a>
+			<div class="nav-item dropdown">
+				<a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img src="https://image.shutterstock.com/image-vector/thin-line-user-icon-on-260nw-519039097.jpg" class="avatar" alt="Avatar"> admin <b class="caret"></b></a>
+				<div class="dropdown-menu">
+					<a href="#" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
+					<a href="#" class="dropdown-item"><i class="fa fa-calendar-o"></i> Calendar</a>
+					<a href="#" class="dropdown-item"><i class="fa fa-sliders"></i> Settings</a>
+					<div class="divider dropdown-divider"></div>
+					<a href="#" class="dropdown-item"><i class="material-icons">&#xE8AC;</i> Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div class="side-bar">
+	<div class="close-btn"> <i class="fa fa-times"></i> </div>
+
+	<div class="menu">
+		<div class="item">
+			<a href="#">
+				<i class="fa fa-desktop"></i>
+				Dashboard
+			</a>
+		</div>
+		<div class="item">
+			<a class="sub-btn">
+				<i class="fa fa-table"></i>
+				client
+				<i class="fa fa-angle-right  dropdown"></i>
+			</a>
+			<div class="sub-menu">
+				<a routerLink="clients" touterLinkActive="active" class="nav-link">clients list</a>
+				<a routerLink="create-client" touterLinkActive="active" class="nav-link">Add client</a>
+				<a href="#" class="sub-item">Sub Item 2</a>
+			</div>
+		</div>
+		
+		<div class="item">
+			<a href="#">
+				<i class="fa fa-cogs"></i>
+				Settings
+			</a>	
+		</div>
+		<div class="item">
+			<a href="#">
+				<i class="fa fa-info-circle"></i>
+				About
+			</a>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div id="container"
+class="container">
+  <!-- * * * * * * * * * * <app-client-component></app-client-component> 
+	
+	<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
   <ul class="navbar-nav">
     <li class="nav-item"><a routerLink="clients" touterLinkActive="active" class="nav-link">clients list</a></li>
     <li class="nav-item"><a routerLink="create-client" touterLinkActive="active" class="nav-link">Add client</a></li>
     
   </ul>
-</nav>
-<h1 class="text-center">Restauration</h1>
-<div class="container">
-  <!-- * * * * * * * * * * <app-client-component></app-client-component>  * * * * * * * * * * * -->
+</nav>* * * * * * * * * * * -->
   <router-outlet></router-outlet>
 </div>
+
+
+
 <footer class="footer">
-  <div class="container">
+  <div>
     <span>All Rights Reserved 2022 @Laila Bouadif</span>
   </div>
 </footer>

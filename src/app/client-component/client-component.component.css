@@ -1,0 +1,16 @@
+table.table td a.edit {
+	color: #FFC107;
+    cursor: pointer;
+}
+table.table td a.delete {
+	color: #F44336;
+    cursor: pointer;
+}
+
+table.table td a.view {
+	color: #57b2ce;
+    cursor: pointer;
+}
+table{
+    background-color: #fff;
+}

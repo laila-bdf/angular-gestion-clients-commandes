@@ -1,5 +1,5 @@
 <h2>Client List</h2>
-<table class="table table-striped">
+<table  class="table table-striped">
     <thead>
         <tr>
             <th>Id</th>
@@ -16,18 +16,51 @@
             <td>{{client.prenom}}</td>
             <td>{{client.dateNaiss}}</td>
             <td>
-                <button (click)="updateClient(client.id)" class="btn btn-info">Update</button>
+                <!-- <button (click)="updateClient(client.id)" class="btn btn-info">Update</button>
                 <button (click)="deleteClient(client.id)"  class="btn btn-danger" style="margin-left: 10px;">delete</button>
                 <button (click)="showClientDetails(client.id)"  class="btn btn-info" style="margin-left: 10px;">details</button>
-           
+                -->
+                <a (click)="updateClient(client.id)"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+				<a (click)="showClientDetails(client.id)" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                <a (click)="onOpenDeleteModel(client)"  href="#deleteClientModal" class="delete" data-toggle="modal" data-backdrop="false"><i class="material-icons"  data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                
             </td>
         </tr>
     </tbody>
 
 </table>
-
+<div id="hidden"></div>
     <mat-paginator  [length]="totalNumber"
                     [pageSize]="3"
                     [pageSizeOptions]="[3,5,10]" 
                     (page)="onPagechange($event)">
     </mat-paginator>
+
+
+
+    
+<!-- Modal delete Client -->
+<div id="deleteClientModal" class="modal ">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form>
+				<div class="modal-header">						
+					<h4 class="modal-title">Delete Client</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">					
+					<p>Are you sure you want to delete this Record?</p>
+					<p class="text-warning"><small>This action cannot be undone.</small></p>
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+					<input  (click)="deleteClient(clientdeleted.id)" type="submit" class="btn btn-danger" data-dismiss="modal" value="Delete">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+
