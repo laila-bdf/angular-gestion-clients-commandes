@@ -4,9 +4,9 @@ import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/internal/Observable';
 import { Client } from '../client';
-import { ClientService } from '../client.service';
+import { ClientService } from '../services/client.service';
 
-import { ClientComponentComponent } from './client-component.component';
+import { ClientComponentComponent } from './client-list.component';
 
 describe('ClientComponentComponent', () => {
   let component: ClientComponentComponent;

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Client } from './client';
+import { Client } from '../model/client';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,10 @@ export class ClientService {
   
   getClientsListPage(numPage:Number, nbrElement:Number): Observable<any>{
     return this.httpClient.get(`${this.baseUrl}?page=${numPage}&size=${nbrElement}`);
+  }
+
+  filterClients(nom : string,prenom:string,numPage:Number, nbrElement:Number): Observable<any>{
+    return this.httpClient.get(`${this.baseUrl}/filter?nom=${nom}&prenom=${prenom}&page=${numPage}&size=${nbrElement}`);
   }
 
   createClient(client:Client): Observable<Object>{

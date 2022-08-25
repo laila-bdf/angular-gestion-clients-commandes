@@ -14,3 +14,11 @@ table.table td a.view {
 table{
     background-color: #fff;
 }
+
+.filters{
+	margin: 20px;
+}
+.filters form input{
+    margin: 20px;
+}
+

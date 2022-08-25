@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/internal/Observable';
-import { Client } from '../client';
-import { ClientService } from '../client.service';
+import { Client } from '../../model/client';
+import { ClientService } from '../../services/client.service';
 
 import { ClientDetailsComponent } from './client-details.component';
 

@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Client } from '../client';
-import { ClientService } from '../client.service';
-import {PageEvent} from '@angular/material/paginator'
+import {PageEvent} from '@angular/material/paginator';
+import { Client } from 'src/app/model/client';
+import { ClientService } from 'src/app/services/client.service';
 
 @Component({
   selector: 'app-client-component',
-  templateUrl: './client-component.component.html',
-  styleUrls: ['./client-component.component.css']
+  templateUrl: './client-list.component.html',
+  styleUrls: ['./client-list.component.css']
 })
 export class ClientComponentComponent implements OnInit {
 
   totalNumber!: number;
   clients!: Client[];
-  pageEvent! : PageEvent;
+  pageEvent : PageEvent = new PageEvent();
+
+  filterparNom:string ="";
+  filterparPrenom:string="";
+
 
   clientdeleted!:Client;
   constructor(private clientService: ClientService, private router:Router) {
@@ -21,37 +25,33 @@ export class ClientComponentComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // this.clients=[
-    //   {
-    //     id: 1,
-    //     nom: "bouadif",
-    //     prenom: "laila",
-    //     dateNaiss: new Date()
-  
-    //   },
-    //   {
-    //     id: 2,
-    //     nom: "bouadif",
-    //     prenom: "laila",
-    //     dateNaiss: new Date()
-  
-    //   }
-    // ]
-
+    this.pageEvent.pageIndex=0;
+    this.pageEvent.pageSize=3;
     this.getClients(0,3);
    
   }
 
-  onPagechange(event : PageEvent){
-    this.pageEvent = event;
-    this.getClients(event.pageIndex,event.pageSize);
-  }
-
-   getClients(pageIndex:number,pageSize:number) {
+  getClients(pageIndex:number,pageSize:number) {
     this.clientService.getClientsListPage(pageIndex,pageSize).subscribe(data =>{
       this.clients =data['content'];
       this.totalNumber = data['totalElements'];
    });
+  }
+
+  onPagechange(event : PageEvent){
+    this.pageEvent = event;
+    //this.getClients(event.pageIndex,event.pageSize);
+    this.filter();
+  }
+
+  
+  filter(){
+    console.log(this.filterparNom,this.filterparPrenom,this.pageEvent.pageIndex,this.pageEvent.pageSize);
+    this.clientService.filterClients(this.filterparNom,this.filterparPrenom,this.pageEvent.pageIndex,this.pageEvent.pageSize).subscribe(
+      data =>{
+      this.clients =data['content']; 
+      this.totalNumber = data['totalElements'];}
+      );
   }
 
   updateClient(id:number){
@@ -59,8 +59,7 @@ export class ClientComponentComponent implements OnInit {
   }
   
   async deleteClient(id:Number)  {
-    // this.router.navigate(['delete-client',id])
-     this.clientService.deleteClient(id).subscribe( data=>
+    this.clientService.deleteClient(id).subscribe(  data=>
       {
          console.log(data);
       }
@@ -74,9 +73,6 @@ export class ClientComponentComponent implements OnInit {
     this.router.navigate(['client-details',id]);
   }
 
-  
-
-
   onOpenDeleteModel(client:Client){
     this.clientdeleted=client;
     const elem= document.getElementById('hidden');
@@ -89,4 +85,5 @@ export class ClientComponentComponent implements OnInit {
     elem?.appendChild(btn);
     btn?.click();
   }
+
 }

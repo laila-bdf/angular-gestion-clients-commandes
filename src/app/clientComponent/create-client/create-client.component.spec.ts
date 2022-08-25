@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ClientService } from '../client.service';
+import { ClientService } from '../services/client.service';
 
 import { CreateClientComponent } from './create-client.component';
 
