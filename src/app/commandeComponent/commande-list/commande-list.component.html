@@ -1,1 +1,66 @@
-<p>commande-list works!</p>
+<h2>Commande List</h2>
+
+<table  class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>date commande</th>
+            <th>prix total</th>
+            <th>mode payement</th>
+            <th>status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody><div *ngIf = "commandes.length == 0 ">
+        <p>
+            Aucun enregistrement 
+        </p>
+    </div>
+        <tr *ngFor="let commande of commandes">
+            <td>{{commande.id}}</td>
+            <td>{{commande.date_commande}}</td>
+            <td>{{commande.prix_total}}</td>
+            <td>{{commande.mode_payement}}</td>
+            <td>{{commande.status}}</td>
+            <td>
+                
+                <a (click)="updateCommande(commande.id)"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+				<a (click)="showcommandeDetails(commande.id)" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                 <a (click)="onOpenDeleteModel(commande)" href="#deleteCommandeModal" class="delete" data-toggle="modal" data-backdrop="false"><i class="material-icons"  data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+<div id="hidden"></div>
+    <mat-paginator  [length]="totalNumber"
+                    [pageSize]="3"
+                    [pageSizeOptions]="[3,5,10]" 
+                    (page)="onPagechange($event)">
+    </mat-paginator>
+
+
+
+    
+<!-- Modal delete Client -->
+<div id="deleteCommandeModal" class="modal ">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<form>
+				<div class="modal-header">						
+					<h4 class="modal-title">Delete Commande</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body">					
+					<p>Are you sure you want to delete this Record?</p>
+					<p class="text-warning"><small>This action cannot be undone.</small></p>
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+					<input  (click)="deleteCommande(commanddeleted.id)" type="submit" class="btn btn-danger" data-dismiss="modal" value="Delete">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

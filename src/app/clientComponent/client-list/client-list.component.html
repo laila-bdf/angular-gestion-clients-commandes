@@ -1,24 +1,25 @@
-<h2>Client List</h2>
+<h2>Mes clients</h2>
 
-<div class="filters">
-    <h3>Filters</h3>
-    
-        <form class="form-inline"  (ngSubmit)="filter()">
-            <div class="form-group">
-            <input type="text" class="form-control" id="nom" placeholder="Nom" name="filterparNom" [(ngModel)]="filterparNom">
-            </div>
-
-            <div class="form-group">
-                <input type="text" class="form-control" id="prenom" placeholder="prenom"  name="filterparPrenom" [(ngModel)]="filterparPrenom">
-            </div>
-            <button   type="submit" class="btn btn-info">searsh</button>
+<div class="filters card">
+    <div class="card-body ">
+        <h3  class="card-title">Filters</h3>
+        <form class="form"  (ngSubmit)="filter()">
+            <div class="row">
+                <div class="form-group col-sm">
+                <input type="text" class="form-control" id="nom" placeholder="Nom" name="filterparNom" [(ngModel)]="filterparNom">
+                </div>
+                <div class="form-group col-sm">
+                    <input type="text" class="form-control" id="prenom" placeholder="Prenom"  name="filterparPrenom" [(ngModel)]="filterparPrenom">
+                </div>
+        </div>
+            <button  type="submit" class="btn btn-info pull-right">Rechercher</button>
         </form>
+    </div>
 </div>
 
 <table  class="table table-striped">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Nom</th>
             <th>Prenom</th>
             <th>Date Naissance</th>
@@ -26,8 +27,12 @@
         </tr>
     </thead>
     <tbody>
+        <div *ngIf = "clients.length == 0 ">
+            <p>
+                Aucun enregistrement 
+            </p>
+        </div>
         <tr *ngFor="let client of clients">
-            <td>{{client.id}}</td>
             <td>{{client.nom}}</td>
             <td>{{client.prenom}}</td>
             <td>{{client.dateNaiss}}</td>
@@ -45,6 +50,7 @@
     </tbody>
 
 </table>
+
 <div id="hidden"></div>
     <mat-paginator  [length]="totalNumber"
                     [pageSize]="3"

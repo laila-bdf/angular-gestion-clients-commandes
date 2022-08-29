@@ -1,3 +1,7 @@
+h2{
+    margin-top: 0px;
+}
+
 table.table td a.edit {
 	color: #FFC107;
     cursor: pointer;
@@ -13,12 +17,17 @@ table.table td a.view {
 }
 table{
     background-color: #fff;
+    margin: auto;
+    font-size: 1.2em ;
 }
 
 .filters{
-	margin: 20px;
+	margin: 60px;
+    margin-bottom: 20px;
+    margin-top: 20px;   
 }
 .filters form input{
     margin: 20px;
+    width: 450px;
 }
 

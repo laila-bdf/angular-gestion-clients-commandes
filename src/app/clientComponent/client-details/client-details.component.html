@@ -1,4 +1,4 @@
-    <form >
+<form >
         <div class="modal-header">						
             <h2 class="modal-title">Client details</h2>
         </div>
@@ -17,4 +17,43 @@
             </div>			
         </div>
         
-    </form>
+</form>
+<p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      mes commandes
+    </a>
+</p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      
+            <table  class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>date commande</th>
+                        <th>prix total</th>
+                        <th>mode payement</th>
+                        <th>status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let commande of commandes">
+                        <td>{{commande.id}}</td>
+                        <td>{{commande.date_commande}}</td>
+                        <td>{{commande.prix_total}}</td>
+                        <td>{{commande.mode_payement}}</td>
+                        <td>{{commande.status}}</td>
+                        
+                    </tr>
+                </tbody>
+
+            </table>
+            <div id="hidden"></div>
+                <mat-paginator  [length]="totalNumber"
+                                [pageSize]="3"
+                                [pageSizeOptions]="[3,5,10]" 
+                                (page)="onPagechange($event)">
+                </mat-paginator>
+
+    </div>
+  </div>

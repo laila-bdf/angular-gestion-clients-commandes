@@ -1,1 +1,28 @@
-<p>commande-details works!</p>
+<form >
+    <div class="modal-header">						
+        <h2 class="modal-title">Commande details</h2>
+    </div>
+    <div class="modal-body">					
+        <div class="form-group">
+            <label>id</label>
+            <input type="text" class="form-control" disabled   value="{{commande.id}}">
+        </div>
+        <div class="form-group">
+            <label>date commande</label>
+            <input type="text" class="form-control" disabled value="{{commande.date_commande}}" >
+        </div>
+        <div class="form-group">
+            <label>prix total</label>
+            <input type="text" class="form-control" disabled  value="{{commande.prix_total}}" >
+        </div>	
+        <div class="form-group">
+            <label>mode payement</label>
+            <input type="text" class="form-control" disabled  value="{{commande.mode_payement}}">
+        </div>	
+        <div class="form-group">
+            <label>status</label>
+            <input type="text" class="form-control" disabled   value="{{commande.status}}" >
+        </div>			
+    </div>
+    
+</form>

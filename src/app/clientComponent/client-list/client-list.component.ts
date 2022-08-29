@@ -17,9 +17,8 @@ export class ClientComponentComponent implements OnInit {
 
   filterparNom:string ="";
   filterparPrenom:string="";
-
-
   clientdeleted!:Client;
+
   constructor(private clientService: ClientService, private router:Router) {
    
    }
@@ -27,8 +26,7 @@ export class ClientComponentComponent implements OnInit {
   ngOnInit(): void {
     this.pageEvent.pageIndex=0;
     this.pageEvent.pageSize=3;
-    this.getClients(0,3);
-   
+    this.filter();
   }
 
   getClients(pageIndex:number,pageSize:number) {

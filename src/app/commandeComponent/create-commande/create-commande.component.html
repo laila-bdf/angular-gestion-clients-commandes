@@ -1,1 +1,33 @@
-<p>create-commande works!</p>
+<div class="addForm card">
+<form #addForm ="ngForm" (ngSubmit)="onSubmit()">
+    <div class="modal-header">						
+        <h2 class="modal-title">Add Commande</h2>
+    </div>
+    <div class="modal-body">				
+        <div class="form-group">
+            <label>date commande</label>
+            <input type="date" class="form-control" required  id="dateCommande" [(ngModel)]="commande.date_commande" name="date_commande">
+        </div>	
+        <div class="form-group">
+            <label>prix total</label>
+            <input type="number" step="0.01" class="form-control" required  id="prix_total" [(ngModel)]="commande.prix_total" name="prix_total">
+        </div>
+        <div class="form-group">
+            <label>mode payement</label>
+            <input type="text" class="form-control" required  id="mode_payement" [(ngModel)]="commande.mode_payement" name="mode_payement">
+        </div>
+        <div class="form-group">
+            <label>status</label>
+            <input type="text" class="form-control" required  id="status" [(ngModel)]="commande.status" name="status">
+        </div>	
+        <div class="form-group">
+            <label>id client </label>
+            <input type="number" class="form-control" required  id="clientId" [(ngModel)]="commande.client.id" name="clientId">
+        </div>		
+    </div>
+    <div class="modal-footer">
+        
+        <input [disabled]="addForm.invalid" type="submit" class="btn btn-success" value="Add">
+    </div>
+</form>
+</div>
